@@ -217,9 +217,29 @@ public:
 
 int main() {
 
-    srand(time(0));
+    srand(time(0));    // Seed random number generator to get different results each run
 
+    // Load customer names from the file "names.txt" into a vector<string>
     vector<string> names;
+    ifstream fin("names.txt");
+    string line;
+    while (getline(fin, line)){
+        if (!line.empty())
+        names.push_back(line); // Add non-empty names to vector
+    }
+    fin.close();
+
+    DoublyLinkedList lineList;  // Create the doubly linked list to represent the line
+
+    // Store opens - add 5 customers immediately
+    cout << "Store opens:" << endl;
+    for (int i = 0; i < 5; i++){
+        string name = names[rand() % names.size()];  // Pick a random name
+        lineList.push_back(name);                     // Add to the end of the line
+        cout << "    " << name << " joins the line" << endl;
+    }
+    
+
 
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
     return 0;
