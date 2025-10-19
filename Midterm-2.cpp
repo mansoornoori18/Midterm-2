@@ -1,4 +1,10 @@
-#include <iostream>
+#include <iostream>   // COMSC-210 | Exam-Midterm-2 | Mansoor Noori
+#include <fstream>    // IDE Visual Studio,
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
