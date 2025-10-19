@@ -191,6 +191,11 @@ public:
 };
 
 int main() {
+
+    srand(time(0));
+
+    vector<string> names;
+    
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
     return 0;
 }
