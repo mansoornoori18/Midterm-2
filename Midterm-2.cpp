@@ -86,7 +86,6 @@ public:
                 cout << "Position doesn't exist." << endl;
                 return;
             }
-            else
                 temp = temp->next;
         }
         if (!temp) {
@@ -154,6 +153,21 @@ public:
             head = tail = nullptr;
         delete temp;
     }
+    string front(){
+        return head ? head->data : "";
+    }
+    string back(){
+        return tail ? tail->data : "";
+    }
+    int size(){
+        int count = 0;
+        Node* current = head;
+        while (current){
+            count++;
+            current = current->next;
+        }
+         return count;
+    }
 
     ~DoublyLinkedList() {
         while (head) {
@@ -195,7 +209,7 @@ int main() {
     srand(time(0));
 
     vector<string> names;
-    
+
     cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
     return 0;
 }
