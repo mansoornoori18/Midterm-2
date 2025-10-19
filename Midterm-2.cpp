@@ -238,9 +238,29 @@ int main() {
         lineList.push_back(name);                     // Add to the end of the line
         cout << "    " << name << " joins the line" << endl;
     }
-    
+    cout << "    Resulting line:" << endl;
+    lineList.print();  // Show initial line
 
+    // Run simulation for time steps 2 through 20
+    for (int t = 2; t <= 20; t++){
+        cout << "Time step #" << t << ":" << endl;
 
-    cout << MIN_NR + MIN_LS + MAX_NR + MAX_LS; // dummy statement to avoid compiler warning
+        // 40% chance the front customer is served and leaves the line
+        int prob = rand() % 100 + 1;
+        if (prob <= 40 && lineList.size() > 0){
+            string served = lineList.front();  // Get the front customer name
+            lineList.pop_front();               // Remove them from line
+            cout << "    " << served << " is served" << endl;
+        }
+        // 60% chance a new customer joins the end of the line
+        prob = rand() % 100 + 1;
+        if (prob <= 60){
+            string name = names[rand() % names.size()];
+            lineList.push_back(name);
+            cout << "    " << name << " joins the line" << endl;
+        }
+        
+    }
+
     return 0;
 }
