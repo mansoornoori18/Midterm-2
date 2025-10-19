@@ -153,9 +153,11 @@ public:
             head = tail = nullptr;
         delete temp;
     }
+    // Return front value as string or empty if list empty
     string front(){
         return head ? head->data : "";
     }
+    // Return back value as string or empty if list empty
     string back(){
         return tail ? tail->data : "";
     }
@@ -166,7 +168,16 @@ public:
             count++;
             current = current->next;
         }
-         return count;
+         return count;   // Return number of nodes in the list
+    }
+    string get(int pos){
+        Node* current = head;
+        int i = 1;
+        while (current && i < pos){
+            current = current->next;
+            i++;
+        }
+        return current ? current->data : "";  // Return value at pos as string or empty if invalid
     }
 
     ~DoublyLinkedList() {
