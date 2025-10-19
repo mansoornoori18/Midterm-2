@@ -259,8 +259,33 @@ int main() {
             lineList.push_back(name);
             cout << "    " << name << " joins the line" << endl;
         }
-        
+        // 20% chance the customer at the end gets frustrated and leaves
+        prob = rand() % 100 + 1;
+        if (prob <= 20 && lineList.size() > 0){
+            string rear = lineList.back();
+            lineList.pop_back();
+            cout << "    " << rear << " (at the rear) left the line" << endl;
+        }
+        // 10% chance any random customer (except front and rear) leaves the line
+        prob = rand() % 100 + 1;
+        if (prob <= 10 && lineList.size() > 2){
+            // Select random position between 2 and size-1 (not front or rear)
+            int pos = rand() % (lineList.size() - 2) + 2;
+            string name = lineList.get(pos);
+            lineList.delete_pos(pos);
+            cout << "    " << name << " left the line" << endl;
+        }
+        // 10% chance a VIP customer arrives and joins the front of the line
+        prob = rand() % 100 + 1;
+        if (prob <= 10){
+            string vip = names[rand() % names.size()];
+            lineList.push_front(vip);
+            cout << "    " << vip << " (VIP) joins the front of the line" << endl;
+        }
+        // Print the current state of the line after all actions this time step
+        cout << "    Resulting line:" << endl;
+        lineList.print();
     }
 
-    return 0;
+    return 0; // end the program.
 }
